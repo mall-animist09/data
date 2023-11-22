@@ -1,0 +1,27 @@
+#import <Cocoa/Cocoa.h>
+
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+@property (strong, nonatomic) NSWindow *window;
+@end
+
+@implementation AppDelegate
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 400, 200)
+        styleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskResizable)
+        backing:NSBackingStoreBuffered
+        defer:NO];
+
+    [self.window setTitle:@"Hello, Cocoa!"];
+    [self.window makeKeyAndOrderFront:nil];
+}
+@end
+
+int main(int argc, const char *argv[]) {
+    @autoreleasepool {
+        NSApplication *application = [NSApplication sharedApplication];
+        AppDelegate *appDelegate = [[AppDelegate alloc] init];
+        [application setDelegate:appDelegate];
+        [application run];
+    }
+    return 0;
+}
